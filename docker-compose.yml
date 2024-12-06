@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: examdb
+      MYSQL_USER: polytech
+      MYSQL_PASSWORD: polytech
+    networks:
+      - network
+    volumes:
+      - mysql_data:/var/lib/mysql:rw
+    ports:
+      - 3306:3306
+
+  back:
+    image: java
+    build:
+      context: java
+      dockerfile: Dockerfile
+    container_name: backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/examdb
+      SPRING_DATASOURCE_USERNAME: polytech
+      SPRING_DATASOURCE_PASSWORD: polytech
+    ports:
+      - 8448:8448
+    networks:
+      - network
+    depends_on:
+      - mysql
+
+  front:
+    build:
+      context: angular
+      dockerfile: Dockerfile
+    container_name: frontend
+    environment:
+      BACKEND_URL: http://backend:8448
+    ports:
+      - 8888:80
+    networks:
+      - network
+    depends_on:
+      - back
+
+networks:
+  network:
+    driver: bridge
+
+volumes:
+  mysql_data:

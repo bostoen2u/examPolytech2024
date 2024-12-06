@@ -1,0 +1,16 @@
+Qu'est ce que Docker ? A quoi cela sert-il ?
+
+ Docker permet de créer et d'exécuter des applications dans des conteneurs cela permet
+ d'isoler et d'automatiser les composants d'un projet dans nos cas le backend, et la db.
+ En plus il garantie le bon lancement (si tout est bien fait) peu importe où ils sont lancés.
+
+ Qu'est ce que la CI et la CD ? Pourquoi est-ce utile ?
+
+CI (Intégration Continue) Cela automatise les tests à chaque modification du code pour s'assurer qu'il n'y a pas de bugs.
+CD (Déploiement Continu) Automatise le déploiement de l'application en production après que les tests aient réussi.
+
+ Ces pratiques sont utiles car elles permettent de détecter rapidement les erreurs, de réduire les interventions manuelles et d'accélérer le déploiement des applications.
+ Qu'avez-vous pensé du cours ?
+
+ J'ai bien aimé le TP guidé pour le lancement d'un projet complet.
+ Cependant, la dernière partie sur les tests et GitHub m'a semblé un peu trop rapide.
